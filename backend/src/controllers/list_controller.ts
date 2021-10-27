@@ -24,7 +24,7 @@ export const addItem = async (req: Request, res: Response) => {
             if (err) {
             res.send(err);
             } else {
-            res.send('Success- Item Added');
+            res.send('Success');
             }
         });
 };
@@ -35,7 +35,7 @@ export const updateItem = async (req: Request, res: Response) => {
             if(err) { 
                 res.send(err);
             } else {
-                res.send('Success- Item Updated');
+                res.send('Success');
             }
     });
 };
@@ -47,7 +47,7 @@ export const deleteItem = async (req: Request, res: Response) => {
             if(err) { 
                 res.send(err);
             } else {
-                res.send('Success- Item Deleted');
+                res.send('Success');
             }
     });
 }

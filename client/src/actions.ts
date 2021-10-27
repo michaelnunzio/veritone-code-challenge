@@ -1,7 +1,7 @@
-import { AppEvents, FilterReducerEvents } from "./events";
+import { AppEvents } from "./events";
 
 export interface IAction {
-  type: AppEvents | FilterReducerEvents;
+  type: AppEvents;
   payload: any;
 }
 
@@ -18,5 +18,19 @@ export const SetShoppingList = (payload: object) => {
       payload,
     };
   };
+
+export const GetListData = (payload: object) => {
+  return {
+    type: AppEvents.GET_LIST_DATA,
+    payload,
+  };
+};
+
+export const SetLoadingState = (payload: object) => {
+  return {
+    type: AppEvents.SET_LOADING_STATE,
+    payload,
+  };
+};
 
 

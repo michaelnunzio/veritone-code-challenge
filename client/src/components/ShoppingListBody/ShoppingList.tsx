@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import { Grid, makeStyles, Button } from '@material-ui/core';
+import ListItemModal from '../Modal/ListItemModal';
 
 import FullList from './ListItem/List';
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +49,10 @@ const ShoppingList = () => {
       Your Items
     </Grid>
     <Grid item xs={6} className={classes.justifyBtn}>
-      <Button>Add Item</Button>
+      {/* <Button>Add Item</Button> */}
+      <ListItemModal
+          type={'addItem'}
+      />
     </Grid>
 
     <FullList/> 

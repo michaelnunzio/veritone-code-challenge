@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ListItemModal from '../../Modal/ListItemModal'
+import DeleteItemModal from '../../Modal/DeleteItemModal';
 import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,9 +64,9 @@ const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
                     item={item}
                     type={'edit'}
                 />
-                <IconButton edge="end" aria-label="comments">
-                <DeleteOutlineIcon />
-                </IconButton>
+                <DeleteItemModal
+                    item={item}
+                />
                 </>
               }
               disablePadding

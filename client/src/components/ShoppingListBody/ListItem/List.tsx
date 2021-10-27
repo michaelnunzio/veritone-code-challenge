@@ -23,7 +23,8 @@ const FullList: React.FunctionComponent<SLProps> = ({ setShoppingList, shoppingL
 
   return (
     <List sx={{ width: '100%',}}>
-        {shoppingListItems.map((item) => {
+      <>
+        {shoppingListItems?.map((item) => {
           const labelId = `checkbox-list-label-${item}`;
           return (
               <ShoppingListItem
@@ -31,6 +32,7 @@ const FullList: React.FunctionComponent<SLProps> = ({ setShoppingList, shoppingL
               />
           );
         })}
+      </>
     </List>
   );
 }
