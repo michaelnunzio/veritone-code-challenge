@@ -1,16 +1,11 @@
 import React, { Dispatch, useState }from 'react';
 import { Grid, makeStyles, Button, Backdrop, Modal, Fade, Box } from '@material-ui/core';
-import Typography from '@mui/material/Typography';
-
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ListItemModal from '../../Modal/ListItemModal'
 import { connect } from "react-redux";
@@ -41,18 +36,6 @@ type ListType = {
 const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
   const classes = useStyles();
 
-  //Dialog Section
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  //Dialog Section
-
   const [checked, setChecked] = React.useState([0]);
 
   const handleToggle = (value: number) => () => {
@@ -76,11 +59,10 @@ const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
               key={item._id}
               secondaryAction={
                 <>
-                <IconButton edge="end" aria-label="comments">
-                  <EditIcon 
-                   onClick={handleClickOpen}                               
-                    />
-                </IconButton>
+                <ListItemModal
+                    item={item}
+                    type={'edit'}
+                />
                 <IconButton edge="end" aria-label="comments">
                 <DeleteOutlineIcon />
                 </IconButton>
@@ -105,13 +87,6 @@ const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
                 </Grid>
               </ListItemButton>
             </ListItem>
-
-            <ListItemModal
-                open={open}
-                handleClose={handleClose}
-                item={item}
-                type={'edit'}
-            />
         </>
   );
 }
