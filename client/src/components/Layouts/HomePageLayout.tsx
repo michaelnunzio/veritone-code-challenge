@@ -8,7 +8,6 @@ interface ParentCompProps {
 const useStyles = makeStyles((theme) => ({
     container: {
         margin: 'auto',
-        // backgroundColor: 'pink',
         padding: '75px 0',
         textAlign: 'center',
         justifyContent: 'center',

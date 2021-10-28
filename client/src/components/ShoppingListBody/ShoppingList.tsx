@@ -1,18 +1,19 @@
-import React, { useState }from 'react';
-import { Grid, makeStyles, Button } from '@material-ui/core';
+import React from 'react';
+import { Grid, makeStyles } from '@material-ui/core';
 import ListItemModal from '../Modal/ListItemModal';
-
 import FullList from './ListItem/List';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     margin: 'auto',
-    // backgroundColor: 'pink',
     padding: '35px',
     maxWidth:'80vw'
     // justifyContent: 'center',
   },
   justifyHeader: {
-    textAlign: 'left'
+    textAlign: 'left',
+    fontSize: '16px',
+    fontWeight: 'bold'
   },
   justifyBtn: {
     textAlign: 'right'
@@ -21,22 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ShoppingList = () => {
   const classes = useStyles();
-
-  const [checked, setChecked] = React.useState([0]);
-
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
-
   return (
     <Grid 
       container

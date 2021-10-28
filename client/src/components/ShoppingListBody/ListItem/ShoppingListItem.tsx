@@ -1,23 +1,36 @@
-import React, { Dispatch, useState }from 'react';
-import { Grid, makeStyles, Button, Backdrop, Modal, Fade, Box } from '@material-ui/core';
+import React from 'react';
+import { Grid, makeStyles } from '@material-ui/core';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ListItemModal from '../../Modal/ListItemModal'
 import DeleteItemModal from '../../Modal/DeleteItemModal';
-import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
     margin: '10px 0',
-    border: 'lightgrey solid 1px'
+    border: 'lightgrey solid 1px',
   },
   innterListItem: {
     padding: '15px !important'
+  },
+  item: {
+    fontWeight: 'bold',
+    fontSize: '16px',
+  },
+  description: {
+    color: 'grey'
+  },
+  itemPurchased: {
+    fontWeight: 'bold',
+    fontSize: '16px',
+    textDecoration: 'line-through',
+    color: theme.palette.primary.main
+  },
+  descPurchased: {
+    textDecoration: 'line-through',
+    color: 'grey'
   }
   
 }));
@@ -36,7 +49,6 @@ type ListType = {
 
 const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
   const classes = useStyles();
-
   const [checked, setChecked] = React.useState([0]);
 
   const handleToggle = (value: number) => () => {
@@ -52,12 +64,14 @@ const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
     setChecked(newChecked);
   };
 
+  const { itemName, description, _id, purchased } = item;
+
     const labelId = `checkbox-list-label-${item}`;
           return (
             <>
             <ListItem
               className={classes.listItem}
-              key={item._id}
+              key={_id}
               secondaryAction={
                 <>
                 <ListItemModal
@@ -75,16 +89,16 @@ const ShoppingListItem: React.FunctionComponent<SLProps> = ({ item }) => {
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
-                    checked={checked.indexOf(item._id) !== -1}
+                    checked={checked.indexOf(_id) !== -1}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ 'aria-labelledby': labelId }}
-                    onClick={handleToggle(item._id)}
+                    onClick={handleToggle(_id)}
                   />
                 </ListItemIcon>
                 <Grid item>
-                    <Grid item>{item?.itemName}</Grid>
-                    <Grid item>{item?.description}</Grid>
+                    <Grid item className={purchased ? classes.itemPurchased : classes.item}>{itemName}</Grid>
+                    <Grid item className={purchased ? classes.descPurchased : classes.description}>{description}</Grid>
                 </Grid>
               </ListItemButton>
             </ListItem>

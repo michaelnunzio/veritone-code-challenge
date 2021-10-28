@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, makeStyles, Button } from '@material-ui/core';
+import ListItemModal from '../Modal/ListItemModal';
 
 const useStyles = makeStyles((theme) => ({
   emptyList: {
@@ -15,9 +16,9 @@ const EmptyList = () => {
       <Grid item className={classes.emptyList}>
         Your Shopping List is Empty :(
           <Grid item>
-            <Button>
-              Add Your First Item
-            </Button>
+            <ListItemModal
+              type={'addNew'}
+            />
           </Grid>
       </Grid>
   );
