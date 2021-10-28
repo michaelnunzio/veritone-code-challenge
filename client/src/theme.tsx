@@ -18,23 +18,11 @@ const theme = createTheme({
     //   contrastText: '#5a4986',
     // },
   },
-//   typography: {
-//     fontFamily: "sans-serif",
-//     fontSize: 16,
-//     body2: {
-//       fontSize: 16,
-//     },
-//     body1: {
-//       fontSize: 18
-//     },
-//     subtitle2: {
-//       fontSize: 14,
-//       fontWeight: 700,
-//     },
-//     subtitle1: {
-//       fontWeight: 700,
-//     },
-//   },
+  typography: {
+    fontFamily: [
+      'Dosis !important'
+    ].join(','),
+  }
 });
 
 export default theme;

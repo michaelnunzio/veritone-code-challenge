@@ -12,7 +12,10 @@ import Buttons from '../Modal/ModalButtons';
 
 const useStyles = makeStyles((theme) => ({
   cancelBtn: {
-    textTransform: 'none'
+    textTransform: 'none',
+    padding: '8px 17px',
+    fontSize: '16px',
+    fontWeight: 600,
   }
 }));
 

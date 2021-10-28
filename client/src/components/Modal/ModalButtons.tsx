@@ -11,7 +11,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.primary.main,
         color: '#fff',
         textTransform: 'none',
-        margin: '10px 0'
+        margin: '10px 0',
+        padding: '6px 17px',
+        fontSize: '16px',
+        fontWeight: 600,
+        "&:hover": {
+            backgroundColor: '#3C6792 !important'
+          },
       },
   }));
   
