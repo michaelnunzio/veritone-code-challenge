@@ -1,6 +1,7 @@
 import React from 'react';
 import Main from './pages/Main';
 import './App.css';
+import { Typography } from '@mui/material';
 
 const App = () => {
   return (

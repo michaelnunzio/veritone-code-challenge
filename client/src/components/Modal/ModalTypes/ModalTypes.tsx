@@ -1,8 +1,10 @@
 import React, { useState, Dispatch } from 'react';
 import Typography from '@mui/material/Typography';
 import DialogContentText from '@mui/material/DialogContentText';
+import { alpha, styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@material-ui/core';
 import { AMOUNT_DROP_DOWN } from '../../../utilities/const';
 import { ModalLoading, ModalSuccess } from './ModalLoadingSuccess';
 import { connect } from 'react-redux';
@@ -11,6 +13,53 @@ import { IAppState } from '../../../store';
 import { ListItemData } from '../../../constants/item-data';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+
+const useStyles = makeStyles((theme) => ({
+    itemStyle: {
+        fontFamily: 'Dosis !important',
+        fontSize: '18px !important',
+        fontWeight: 500,
+        padding: '5px 0'
+    },
+    subItemStlye: {
+        fontFamily: 'Dosis !important',
+        fontSize: '17px !important',
+        fontWeight: 500,
+        padding: '0 0 7px 0',
+        color: '#5C6269'
+    },
+    inputs: {
+        fontFamily: 'Dosis !important',
+        color: 'pink !important'
+    },
+    purchasedTxt: {
+        fontFamily: 'Dosis !important',
+        color: '#9CA8B4'
+    }
+  }));
+
+  const CssTextField = styled(TextField)({
+    "& .MuiFormLabel-root": {
+        fontFamily: 'Dosis !important',
+        color: "#9CA8B4",
+        fontSize: '17px'
+      },
+    '& .MuiOutlinedInput-root': {
+        color: '#9CA8B4',
+      '& fieldset': {
+        borderColor: '#D5DFE9',
+      },
+      '&:hover fieldset': {
+        borderColor: '#D5DFE9',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#D5DFE9',
+      },
+      fontFamily: [
+        'Dosis !important'
+      ].join(','),
+    },
+  });
 
 interface IEditProps {
     setListItemData(x): any;
@@ -23,7 +72,17 @@ interface IAddProps {
     modalLoading: number
   }
 
+const PurchasedText = () => {
+    const classes = useStyles();
+    return (
+        <div className={classes.purchasedTxt}>Purchased</div>
+    )
+}
+
 const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps, modalLoading }) => {
+    
+    const classes = useStyles();
+
     const { 
         itemName, itemAmount, description, _id, purchased
      } = componentProps;
@@ -60,13 +119,14 @@ const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps,
         <>
         {modalLoading === 0 ?
         <>
-            <Typography>
+            <div className={classes.itemStyle}>
                 Edit an item
-            </Typography>
-            <DialogContentText>
+            </div>
+            <div className={classes.subItemStlye}>
                 Edit your item below
-            </DialogContentText>
-            <TextField
+            </div>
+            <CssTextField
+                className={classes.inputs}
                 margin="dense"
                 id="outlined-basic" 
                 label="Item Name" 
@@ -77,7 +137,7 @@ const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps,
                 onChange={handleFormChange} 
                 />
 
-            <TextField
+            <CssTextField
                 id="outlined-multiline-static"
                 label="Description"
                 multiline
@@ -89,7 +149,7 @@ const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps,
                 margin="normal"
             />
 
-            <TextField
+            <CssTextField
             id="outlined-select-currency"
             select
             label="How many?"
@@ -104,15 +164,21 @@ const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps,
                 {option}
                 </MenuItem>
             ))}
-            </TextField>
+            </CssTextField>
             <FormControlLabel 
             control={
             <Checkbox
+            sx={{
+                color: '#C6C6C6',
+                '&.Mui-checked': {
+                  color: '#4C81B7',
+                },
+              }}
                 checked={checked}
                 onChange={handleToggle}
                 inputProps={{ 'aria-label': 'controlled' }}
             />
-            } label="Purchased" 
+            } label={PurchasedText()} 
             />
         </>
         :
@@ -128,6 +194,8 @@ const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps,
 }
 
 const ModalAddItems: React.FC<IAddProps> = ({ setListItemData, modalLoading }) => {
+
+    const classes = useStyles();
 
     const [formState, setFormState] = React.useState({
         name: '',
@@ -152,12 +220,12 @@ const ModalAddItems: React.FC<IAddProps> = ({ setListItemData, modalLoading }) =
         <>
         {modalLoading === 0 ?
         <>
-            <Typography>
+            <div className={classes.itemStyle}>
                 Add an item
-            </Typography>
-            <DialogContentText>
+            </div>
+            <div className={classes.subItemStlye}>
                 Add your new item below
-            </DialogContentText>
+            </div>
             <TextField
                 margin="dense"
                 id="outlined-basic" 

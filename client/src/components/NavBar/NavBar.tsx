@@ -8,6 +8,10 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     navBar: {
         'backgroundColor': theme.palette.primary.main
+    },
+    title: {
+        fontSize: '20px',
+        fontWeight: 600
     }
 }));
 
@@ -17,9 +21,9 @@ const NavBar = () => {
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" className={classes.navBar}>
             <Toolbar>
-            <Typography variant="h6" component="div">
+            <div className={classes.title}>
                 SHOPPING LIST
-            </Typography>
+            </div>
             </Toolbar>
         </AppBar>
         </Box>
