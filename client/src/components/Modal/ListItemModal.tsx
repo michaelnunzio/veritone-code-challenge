@@ -1,6 +1,5 @@
 import React, {Dispatch} from 'react';
-import Typography from '@mui/material/Typography';
-import { Grid, makeStyles, Button, Backdrop, Modal, Fade, Box } from '@material-ui/core';
+import { makeStyles, Button } from '@material-ui/core';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -16,11 +15,19 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     dialogContainer: {
-
+    },
+    addBtn: {
+      backgroundColor: theme.palette.primary.main,
+      color: '#fff',
+      textTransform: 'none',
+      margin: '10px 0'
     },
     dialogHeader: {
         backgroundColor: '#fafafa',
         minWidth: '60vw',
+    },
+    cancelBtn: {
+      textTransform: 'none'
     }
   }));
 
@@ -33,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModalLoadingState }) => {
     const classes = useStyles();
-    // const { type, item } = props;
 
     //Dialog Section
         const [open, setOpen] = React.useState(false);
@@ -46,7 +52,7 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
             setOpen(false);
             setTimeout(() => {
               setModalLoadingState(0);
-            }, 1000)
+            }, 100)
         };
     //Dialog Section
 
@@ -60,11 +66,11 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
           )
         case 'addItem':
           return (
-            <Button onClick={handleClickOpen}>Add Item</Button>
+            <Button className={classes.addBtn} onClick={handleClickOpen}>Add Item</Button>
           )
         case 'addNew':
           return (
-            <Button onClick={handleClickOpen}>Add Your First Item</Button>
+            <Button className={classes.addBtn} onClick={handleClickOpen}>Add Your First Item</Button>
           )
       }
     }
@@ -83,7 +89,7 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
     <DialogActions>
       { modalLoading === 0 ?
       <>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button className={classes.cancelBtn} onClick={handleClose}>Cancel</Button>
           {type === 'edit' ?
             <Buttons.ModalUpdateButton/>
           : 

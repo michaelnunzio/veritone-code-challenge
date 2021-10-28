@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import { Button, makeStyles } from '@material-ui/core';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -10,11 +10,18 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { ListItemData } from '../../constants/item-data'
 import Buttons from '../Modal/ModalButtons';
 
+const useStyles = makeStyles((theme) => ({
+  cancelBtn: {
+    textTransform: 'none'
+  }
+}));
+
 interface ItemData {
     item: ListItemData
 }
 const DeleteItemModal:React.FC<ItemData> = (ItemData) => {
-
+  const classes = useStyles();
+  
   const {item: { _id }} = ItemData;
   const [open, setOpen] = React.useState(false);
 
@@ -47,7 +54,7 @@ const DeleteItemModal:React.FC<ItemData> = (ItemData) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button className={classes.cancelBtn} onClick={handleClose}>Cancel</Button>
           {/* <Button onClick={handleClose} autoFocus>
             Delete
           </Button> */}

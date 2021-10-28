@@ -1,3 +1,9 @@
+#Steps to run
+1. cd backend => npm install
+2. cd client => npm install
+3. In the root backend folder: Create .env file & add variables I sent to Vaco
+4. npm start => In both the backend & client folders
+
 Challenge 
 
 Implement a full-stack shopping list using the provided mocks. The shopping list has the ability to add, edit, and remove shopping items. Consider implementing lazy loading for the list, either using pagination or infinite scrolling. 
