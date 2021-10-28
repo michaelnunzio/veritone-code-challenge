@@ -2,7 +2,7 @@
 1. cd backend => npm install
 2. cd client => npm install
 3. In the root backend folder: Create .env file & add variables I sent to Vaco
-4. npm start => In both the backend & client folders
+4. npm start => In both the backend & client directories via the terminal
 
 Challenge 
 
