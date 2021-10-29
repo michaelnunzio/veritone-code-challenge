@@ -20,14 +20,34 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.primary.main,
       color: '#fff',
       textTransform: 'none',
-      margin: '10px 0'
+      margin: '10px 0',
+      padding: '6px 17px',
+      fontSize: '16px',
+      fontWeight: 600,
+      "&:hover": {
+          backgroundColor: '#3C6792 !important'
+        },
     },
     dialogHeader: {
         backgroundColor: '#fafafa',
         minWidth: '60vw',
+        fontFamily: 'Dosis !important',
+        marginBottom: '25px !important',
+        borderBottom: 'solid .5px #D5DFE9'
+    },
+    dialogHeaderTxt: {
+      fontSize: '17px',
+      fontWeight: 800,
+      color: '#5C6269'
     },
     cancelBtn: {
-      textTransform: 'none'
+      textTransform: 'none',
+      padding: '8px 17px',
+      fontSize: '16px',
+      fontWeight: 600,
+    },
+    iconBtn: {
+      margin: '2px !important',
     }
   }));
 
@@ -60,7 +80,7 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
       switch(type) {
         case 'edit':
           return (
-          <IconButton edge="end" aria-label="comments" onClick={handleClickOpen}>
+          <IconButton className={classes.iconBtn} edge="end" aria-label="comments" onClick={handleClickOpen}>
             <EditIcon />
           </IconButton>
           )
@@ -79,7 +99,9 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
     <>
     {returnCorrectBtn(type)}
     <Dialog className={classes.dialogContainer} open={open} onClose={handleClose}>
-    <DialogTitle className={classes.dialogHeader}>SHOPPING LIST</DialogTitle>
+    <DialogTitle className={classes.dialogHeader}>
+      <div className={classes.dialogHeaderTxt}>SHOPPING LIST</div>
+    </DialogTitle>
     <DialogContent>
         { type === 'edit' ?
             <Modals.ModalEditItems
@@ -95,7 +117,7 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
           : 
           <Buttons.ModalAddButton/> }
         </>
-      : <Button onClick={handleClose}>Close</Button>}
+      : <Button className={classes.cancelBtn} onClick={handleClose}>Close</Button>}
     </DialogActions>
   </Dialog>
   </>

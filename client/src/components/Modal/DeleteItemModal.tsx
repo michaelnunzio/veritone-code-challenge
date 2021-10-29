@@ -12,7 +12,32 @@ import Buttons from '../Modal/ModalButtons';
 
 const useStyles = makeStyles((theme) => ({
   cancelBtn: {
-    textTransform: 'none'
+    textTransform: 'none',
+    padding: '8px 17px',
+    fontSize: '16px',
+    fontWeight: 600,
+  },
+  dialogHeader: {
+    backgroundColor: '#fafafa',
+    minWidth: '60vw',
+    fontFamily: 'Dosis !important',
+    marginBottom: '25px !important',
+    borderBottom: 'solid .5px #D5DFE9'
+},
+  dialogHeaderTxt: {
+    fontSize: '17px',
+    fontWeight: 800,
+    color: '#5C6269'
+  },
+  subItemStlye: {
+    fontFamily: 'Dosis !important',
+    fontSize: '17px !important',
+    fontWeight: 500,
+    padding: '0 0 7px 0',
+    color: '#5C6269'
+  },
+  iconBtn: {
+    margin: '2px !important',
   }
 }));
 
@@ -35,7 +60,7 @@ const DeleteItemModal:React.FC<ItemData> = (ItemData) => {
 
   return (
     <>
-      <IconButton onClick={handleClickOpen} edge="end" aria-label="comments">
+      <IconButton className={classes.iconBtn} onClick={handleClickOpen} edge="end" aria-label="comments">
         <DeleteOutlineIcon />
       </IconButton>
 
@@ -45,13 +70,13 @@ const DeleteItemModal:React.FC<ItemData> = (ItemData) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          Delete Item?
+        <DialogTitle className={classes.dialogHeader}>
+        <div className={classes.dialogHeaderTxt}>DELETE ITEM?</div>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <div className={classes.subItemStlye}>
             Are you sre you want to delete this item? This can not be undone.
-          </DialogContentText>
+          </div>
         </DialogContent>
         <DialogActions>
           <Button className={classes.cancelBtn} onClick={handleClose}>Cancel</Button>

@@ -11,7 +11,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.primary.main,
         color: '#fff',
         textTransform: 'none',
-        margin: '10px 0'
+        margin: '10px 0',
+        padding: '6px 17px',
+        fontSize: '16px',
+        fontWeight: 600,
+        "&:hover": {
+            backgroundColor: '#3C6792 !important'
+          },
       },
   }));
   
@@ -61,10 +67,10 @@ const ModalAddButton: React.FC<SLProps> = ({setShoppingList, setLoadingState, li
 
 const ModalUpdateButton: React.FC<SLProps> = ({setShoppingList, setLoadingState, listData}) => {
     const classes = useStyles();
-    const updateItem = async (listData) => {
+    const updateItem = (listData) => {
         setLoadingState(1);
         const { name, amount, desc, purchasedState } = listData
-       await axios.patch(`/updateItem/${listData?.id}`,
+        axios.patch(`/updateItem/${listData?.id}`,
         {
             "itemName": name,
             "description": desc,

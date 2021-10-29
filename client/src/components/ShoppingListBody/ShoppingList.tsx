@@ -12,11 +12,12 @@ const useStyles = makeStyles((theme) => ({
   },
   justifyHeader: {
     textAlign: 'left',
-    fontSize: '16px',
-    fontWeight: 'bold'
+    fontSize: '21px',
+    fontWeight: 'bold',
+    marginTop: '10px'
   },
   justifyBtn: {
-    textAlign: 'right'
+    textAlign: 'right',
   },
 }));
 
@@ -27,14 +28,13 @@ const ShoppingList = () => {
       container
       justifyContent="space-between"
       alignItems="center"
-      spacing={1}
+      // spacing={1}
       className={classes.container}
     >
     <Grid item xs={6} className={classes.justifyHeader}>
       Your Items
     </Grid>
     <Grid item xs={6} className={classes.justifyBtn}>
-      {/* <Button>Add Item</Button> */}
       <ListItemModal
           type={'addItem'}
       />
