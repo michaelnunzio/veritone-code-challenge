@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
       padding: '8px 17px',
       fontSize: '16px',
       fontWeight: 600,
+    },
+    iconBtn: {
+      margin: '2px !important',
     }
   }));
 
@@ -77,7 +80,7 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
       switch(type) {
         case 'edit':
           return (
-          <IconButton edge="end" aria-label="comments" onClick={handleClickOpen}>
+          <IconButton className={classes.iconBtn} edge="end" aria-label="comments" onClick={handleClickOpen}>
             <EditIcon />
           </IconButton>
           )
@@ -114,7 +117,7 @@ const TransitionsModal: React.FC<IProps> = ({ type, item, modalLoading, setModal
           : 
           <Buttons.ModalAddButton/> }
         </>
-      : <Button onClick={handleClose}>Close</Button>}
+      : <Button className={classes.cancelBtn} onClick={handleClose}>Close</Button>}
     </DialogActions>
   </Dialog>
   </>

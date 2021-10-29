@@ -6,6 +6,12 @@ import Typography from '@mui/material/Typography';
 const useStyles = makeStyles((theme) => ({
     innerContainer: {
         padding: '30px 0'
+    },
+    itemSuccess: {
+        fontFamily: 'Dosis !important',
+        fontSize: '18px !important',
+        fontWeight: 500,
+        padding: '5px 0'
     }
   }));
 
@@ -20,9 +26,9 @@ export const ModalSuccess = (props) => {
     const { type } = props;
     return (
         <Grid container className={classes.innerContainer}>
-            <Typography>
+            <div className={classes.itemSuccess}>
                Item Succesfully {type}
-            </Typography>
+            </div>
         </Grid>
     )
 }

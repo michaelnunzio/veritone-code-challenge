@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
       '&checked': {
         color: '#3D70B2 !important',
       }
-  }
+  },
 }));
 
 interface SLProps {

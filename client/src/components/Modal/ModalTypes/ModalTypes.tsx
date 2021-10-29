@@ -72,13 +72,6 @@ interface IAddProps {
     modalLoading: number
   }
 
-const PurchasedText = () => {
-    const classes = useStyles();
-    return (
-        <div className={classes.purchasedTxt}>Purchased</div>
-    )
-}
-
 const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps, modalLoading }) => {
     
     const classes = useStyles();
@@ -178,7 +171,7 @@ const ModalEditItems: React.FC<IEditProps> = ({ setListItemData, componentProps,
                 onChange={handleToggle}
                 inputProps={{ 'aria-label': 'controlled' }}
             />
-            } label={PurchasedText()} 
+            } label={<div className={classes.purchasedTxt}>Purchased</div>} 
             />
         </>
         :
@@ -226,7 +219,7 @@ const ModalAddItems: React.FC<IAddProps> = ({ setListItemData, modalLoading }) =
             <div className={classes.subItemStlye}>
                 Add your new item below
             </div>
-            <TextField
+            <CssTextField
                 margin="dense"
                 id="outlined-basic" 
                 label="Item Name" 
@@ -237,7 +230,7 @@ const ModalAddItems: React.FC<IAddProps> = ({ setListItemData, modalLoading }) =
                 onChange={handleFormChange} 
                 />
 
-            <TextField
+            <CssTextField
                 id="outlined-multiline-static"
                 label="Description"
                 multiline
@@ -249,7 +242,7 @@ const ModalAddItems: React.FC<IAddProps> = ({ setListItemData, modalLoading }) =
                 margin="normal"
             />
 
-            <TextField
+            <CssTextField
             id="outlined-select-currency"
             select
             label="How many?"
@@ -264,7 +257,7 @@ const ModalAddItems: React.FC<IAddProps> = ({ setListItemData, modalLoading }) =
                 {option}
                 </MenuItem>
             ))}
-            </TextField>
+            </CssTextField>
         </>
         : 
         

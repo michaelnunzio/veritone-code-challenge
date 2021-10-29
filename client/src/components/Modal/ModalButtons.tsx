@@ -69,12 +69,12 @@ const ModalUpdateButton: React.FC<SLProps> = ({setShoppingList, setLoadingState,
     const classes = useStyles();
     const updateItem = (listData) => {
         setLoadingState(1);
-        const { name, amount, desc } = listData
+        const { name, amount, desc, purchasedState } = listData
         axios.patch(`/updateItem/${listData?.id}`,
         {
             "itemName": name,
             "description": desc,
-            "purchased": false,
+            "purchased": purchasedState,
             "itemAmount": amount
         }
         ).then( (x) => {
